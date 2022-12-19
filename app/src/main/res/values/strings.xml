@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Majang</string>
+    <string name="wan">萬牌</string>
+    <string name="wan_1">一萬</string>
+    <string name="wan_2">二萬</string>
+    <string name="wan_3">三萬</string>
+    <string name="wan_4">四萬</string>
+    <string name="wan_5">五萬</string>
+    <string name="wan_6">六萬</string>
+    <string name="wan_7">七萬</string>
+    <string name="wan_8">八萬</string>
+    <string name="wan_9">九萬</string>
 </resources>
