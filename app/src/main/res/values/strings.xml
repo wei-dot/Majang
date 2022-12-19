@@ -10,4 +10,14 @@
     <string name="wan_7">七萬</string>
     <string name="wan_8">八萬</string>
     <string name="wan_9">九萬</string>
+    <string name="tiao">條牌</string>
+    <string name="tiao_1">一條</string>
+    <string name="tiao_2">二條</string>
+    <string name="tiao_3">三條</string>
+    <string name="tiao_4">四條</string>
+    <string name="tiao_5">五條</string>
+    <string name="tiao_6">六條</string>
+    <string name="tiao_7">七條</string>
+    <string name="tiao_8">八條</string>
+    <string name="tiao_9">九條</string>
 </resources>
