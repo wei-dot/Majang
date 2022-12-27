@@ -47,16 +47,33 @@ public class MainActivity extends AppCompatActivity {
 
         try{
             for(String[] s : majang_list){
+                View tiao_item = getLayoutInflater().inflate(R.layout.majang_item, linearLayout, false);
+                ImageView imageView = tiao_item.findViewById(R.id.majang_icon);
+                TextView textView = tiao_item.findViewById(R.id.majang_name);
+                InputStream inputStream = getAssets().open(String.format("majang_icon/%s/%s", s[0], s[1]));
+                imageView.setImageDrawable(Drawable.createFromStream(inputStream, null));
+                imageView.requestLayout();
+                imageView.getLayoutParams().height = 100;
+                imageView.getLayoutParams().width = 100;
+                textView.setText(s[1]);
+                tiao_item.setTag("unselected");
+                tiao_item.setPadding(10, 10, 10, 10);
+                tiao_item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //點擊後圖片向上移動
+                        if (tiao_item.getTag().equals("selected")) {
+                            //remove stroke
+                            tiao_item.setBackgroundResource(0);
+                            tiao_item.setTag("unselected");
+                        } else {
+                            //set out stroke
+                            tiao_item.setBackgroundResource(R.drawable.majang_item_stroke);
+                            tiao_item.setTag("selected");
+                        }
+                    }
+                });
                 if (s[0].equals("tiao")){
-                    View tiao_item = getLayoutInflater().inflate(R.layout.majang_item, linearLayout, false);
-                    ImageView imageView = tiao_item.findViewById(R.id.majang_icon);
-                    TextView textView = tiao_item.findViewById(R.id.majang_name);
-                    InputStream inputStream = getAssets().open(String.format("majang_icon/%s/%s", s[0], s[1]));
-                    imageView.setImageDrawable(Drawable.createFromStream(inputStream, null));
-                    imageView.requestLayout();
-                    imageView.getLayoutParams().height = 100;
-                    imageView.getLayoutParams().width = 100;
-                    textView.setText(s[1]);
                     linearLayout.addView(tiao_item);
                 }
             }

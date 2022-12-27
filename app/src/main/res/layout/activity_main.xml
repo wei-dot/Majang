@@ -6,41 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <TextView
+        android:layout_width="34dp"
+        android:layout_height="21dp"
+        android:text="@string/tiao"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textSize="16sp"
+        android:textColor="@color/main"
+        app:layout_constraintBottom_toTopOf="@+id/tiao_card"
+        app:layout_constraintStart_toStartOf="@+id/tiao_card" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/tiao_card"
-        android:layout_width="346dp"
-        android:layout_height="153dp"
+        android:layout_width="345dp"
+        android:layout_height="80dp"
         android:layout_margin="30dp"
-        app:cardBackgroundColor="@color/purple_200"
+        app:cardBackgroundColor="@color/thr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.244">
+        app:layout_constraintVertical_bias="0.027"
+        app:cardCornerRadius="10dp"
+        >
         <!-- Title, secondary and supporting text -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="@string/tiao"
-            android:textAlignment="center"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            android:textSize="32sp" />
 
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="62dp"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="80dp">
+            android:layout_marginVertical="10dp"
+            tools:ignore="SpeakableTextPresentCheck">
 
             <!-- Buttons -->
             <LinearLayout
                 android:id="@+id/tiao_linear_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-            </LinearLayout>
+                android:orientation="horizontal" />
         </HorizontalScrollView>
+
+
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
@@ -48,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        app:cardBackgroundColor="@color/purple_200"
+        app:cardBackgroundColor="@color/thr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
