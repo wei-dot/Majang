@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <TextView
         android:layout_width="34dp"
         android:layout_height="21dp"
         android:text="@string/tiao"
         android:textAlignment="center"
         android:textAppearance="?attr/textAppearanceTitleMedium"
-        android:textSize="16sp"
         android:textColor="@color/main"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/tiao_card"
         app:layout_constraintStart_toStartOf="@+id/tiao_card" />
 
@@ -24,14 +23,13 @@
         android:layout_height="80dp"
         android:layout_margin="30dp"
         app:cardBackgroundColor="@color/thr"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027"
-        app:cardCornerRadius="10dp"
-        >
+        app:layout_constraintVertical_bias="0.027">
         <!-- Title, secondary and supporting text -->
 
         <HorizontalScrollView
@@ -52,134 +50,135 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <TextView
+        android:layout_width="34dp"
+        android:layout_height="21dp"
+        android:text="@string/wan"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textColor="@color/main"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/wan_card"
+        app:layout_constraintStart_toStartOf="@+id/wan_card" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/wan_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="345dp"
+        android:layout_height="80dp"
         android:layout_margin="30dp"
         app:cardBackgroundColor="@color/thr"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.62">
-
-
+        app:layout_constraintVertical_bias="0.239">
         <!-- Title, secondary and supporting text -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="@string/wan"
-            android:textAlignment="center"
-            android:textAppearance="?attr/textAppearanceTitleMedium"
-            android:textSize="32sp" />
 
         <HorizontalScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="50dp">
+            android:layout_marginVertical="10dp"
+            tools:ignore="SpeakableTextPresentCheck">
 
             <!-- Buttons -->
             <LinearLayout
+                android:id="@+id/wan_linear_layout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/wan_1"
-                    app:icon="@drawable/wan_1"
-                    app:iconGravity="textTop"
-                    app:iconTint="@null" />
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/wan_2"
-                    app:icon="@drawable/wan_2"
-                    app:iconGravity="textTop"
-                    app:iconTint="@null" />
+    </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/wan_3"
-                    app:icon="@drawable/wan_3"
-                    app:iconGravity="textTop"
-                    app:iconTint="@null" />
+    <TextView
+        android:layout_width="34dp"
+        android:layout_height="21dp"
+        android:text="@string/tong"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textColor="@color/main"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tong_card"
+        app:layout_constraintStart_toStartOf="@+id/tong_card" />
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/wan_4"
-                    app:icon="@drawable/wan_4"
-                    app:iconGravity="textTop"
-                    app:iconTint="@null" />
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tong_card"
+        android:layout_width="345dp"
+        android:layout_height="80dp"
+        android:layout_margin="30dp"
+        app:cardBackgroundColor="@color/thr"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.46">
+        <!-- Title, secondary and supporting text -->
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/wan_5"
-                    app:icon="@drawable/wan_5"
-                    app:iconGravity="textTop"
-                    app:iconTint="@null" />
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="10dp"
+            tools:ignore="SpeakableTextPresentCheck">
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/wan_6"
-                    app:icon="@drawable/wan_6"
-                    app:iconGravity="textTop"
-                    app:iconTint="@null" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/wan_7"
-                    app:icon="@drawable/wan_7"
-                    app:iconGravity="textTop"
-                    app:iconTint="@null" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/wan_8"
-                    app:icon="@drawable/wan_8"
-                    app:iconGravity="textTop"
-                    app:iconTint="@null" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/borderlessButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/wan_9"
-                    app:icon="@drawable/wan_9"
-                    app:iconGravity="textTop"
-                    app:iconTint="@null" />
-            </LinearLayout>
+            <!-- Buttons -->
+            <LinearLayout
+                android:id="@+id/tong_linear_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
         </HorizontalScrollView>
 
     </com.google.android.material.card.MaterialCardView>
 
+    <TextView
+        android:layout_width="34dp"
+        android:layout_height="21dp"
+        android:text="@string/zi"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textColor="@color/main"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/zi_card"
+        app:layout_constraintStart_toStartOf="@+id/zi_card" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/zi_card"
+        android:layout_width="345dp"
+        android:layout_height="80dp"
+        android:layout_margin="30dp"
+        app:cardBackgroundColor="@color/thr"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.675">
+        <!-- Title, secondary and supporting text -->
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="10dp"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <!-- Buttons -->
+            <LinearLayout
+                android:id="@+id/zi_linear_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

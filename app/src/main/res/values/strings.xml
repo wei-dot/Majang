@@ -20,4 +20,22 @@
     <string name="tiao_7">七條</string>
     <string name="tiao_8">八條</string>
     <string name="tiao_9">九條</string>
+    <string name="tong">筒牌</string>
+    <string name="tong_1">一筒</string>
+    <string name="tong_2">二筒</string>
+    <string name="tong_3">三筒</string>
+    <string name="tong_4">四筒</string>
+    <string name="tong_5">五筒</string>
+    <string name="tong_6">六筒</string>
+    <string name="tong_7">七筒</string>
+    <string name="tong_8">八筒</string>
+    <string name="tong_9">九筒</string>
+    <string name="zi">字牌</string>
+    <string name="zi_1">東</string>
+    <string name="zi_2">南</string>
+    <string name="zi_3">西</string>
+    <string name="zi_4">北</string>
+    <string name="zi_5">中</string>
+    <string name="zi_6">發</string>
+    <string name="zi_7">白</string>
 </resources>
