@@ -189,10 +189,10 @@ public class Hai {
         if (!Hai.isLegal(hands, tin)) {
             return "無法和牌";
         } else {
-            if (Hai.isKokushi(full)) {
+            if (Hai.isKokushi_ad(hands, tin)) {
                 fan = 13;
-                ans = "國士無雙 \n";
-            } else if (Hai.isKokushi_ad(hands, tin)) {
+                ans = "國士無雙十三面 \n";
+            } else if (Hai.isKokushi(full)) {
                 fan = 13;
                 ans = "國士無雙十三面 \n";
             } else if (Hai.isDaisan(full)) {
