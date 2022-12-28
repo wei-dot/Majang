@@ -1,38 +1,38 @@
 package com.majang.ui.calculate;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.majang.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.majang.databinding.FragmentCalcBinding;
 
 public class CalcFragment extends Fragment {
 
-    private CalcViewModel mViewModel;
+    private FragmentCalcBinding binding;
 
-    public static CalcFragment newInstance() {
-        return new CalcFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_calc, container, false);
+        CalcViewModel homeViewModel =
+                new ViewModelProvider(this).get(CalcViewModel.class);
+
+        binding = FragmentCalcBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+        return root;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(CalcViewModel.class);
-        // TODO: Use the ViewModel
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
+
 
 }
