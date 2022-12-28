@@ -75,16 +75,6 @@ public class HomeFragment extends Fragment {
 
                     final String Majang_types = majang_types;
                     majang_item.setOnClickListener(v -> {
-                        //點擊後圖片向上移動
-                        if (majang_item.getTag().equals("selected")) {
-                            //remove stroke
-                            majang_item.setBackgroundResource(0);
-                            majang_item.setTag("unselected");
-                        } else {
-                            //set out stroke
-                            majang_item.setBackgroundResource(R.drawable.majang_item_stroke);
-                            majang_item.setTag("selected");
-                        }
                         try {
                             View majang_item1;
                             int sum = Collections.frequency(views, s1);
