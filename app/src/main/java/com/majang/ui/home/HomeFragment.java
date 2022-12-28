@@ -20,6 +20,7 @@ import com.majang.databinding.FragmentHomeBinding;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class HomeFragment extends Fragment {
@@ -62,17 +63,11 @@ public class HomeFragment extends Fragment {
 
                 }
                 for (String s1 : test.values()) {
-                    View majang_item = getLayoutInflater().inflate(R.layout.majang_item, linearLayout1, false);
-                    ImageView imageView = majang_item.findViewById(R.id.majang_icon);
-                    TextView textView = majang_item.findViewById(R.id.majang_name);
-                    InputStream inputStream = requireActivity().getAssets().open(String.format("majang_icon/%s/%s", majang_types, s1));
-                    imageView.setImageDrawable(Drawable.createFromStream(inputStream, null));
-                    imageView.requestLayout();
-                    imageView.getLayoutParams().height = 100;
-                    imageView.getLayoutParams().width = 100;
-                    textView.setText(s1);
-                    majang_item.setTag("unselected");
-                    majang_item.setPadding(10, 10, 10, 10);
+                    LinearLayout linearLayout = binding.bottomBar.myLinearLayout;
+                    View majang_item = addItem(majang_types, s1, linearLayout1);
+
+
+                    final String Majang_types = majang_types;
                     majang_item.setOnClickListener(v -> {
                         //點擊後圖片向上移動
                         if (majang_item.getTag().equals("selected")) {
@@ -84,14 +79,39 @@ public class HomeFragment extends Fragment {
                             majang_item.setBackgroundResource(R.drawable.majang_item_stroke);
                             majang_item.setTag("selected");
                         }
+                        try {
+                            View majang_item1 = addItem(Majang_types, s1, linearLayout);
+                            majang_item1.setOnClickListener(v1 -> {
+                                linearLayout.removeView(majang_item1);
+                            });
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+
                     });
-                    linearLayout1.addView(majang_item);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return root;
+    }
+
+    public View addItem(String majang_types, String s1, LinearLayout linearLayout) throws IOException {
+        View majang_item = getLayoutInflater().inflate(R.layout.majang_item, linearLayout, false);
+        ImageView imageView = majang_item.findViewById(R.id.majang_icon);
+        TextView textView = majang_item.findViewById(R.id.majang_name);
+        InputStream inputStream = requireActivity().getAssets().open(String.format("majang_icon/%s/%s", majang_types, s1));
+        imageView.setImageDrawable(Drawable.createFromStream(inputStream, null));
+        imageView.requestLayout();
+        imageView.getLayoutParams().height = 100;
+        imageView.getLayoutParams().width = 100;
+        textView.setText(s1);
+        majang_item.setTag("unselected");
+        majang_item.setPadding(10, 10, 10, 10);
+        linearLayout.addView(majang_item);
+        return majang_item;
     }
 
     @Override
