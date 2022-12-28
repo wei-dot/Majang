@@ -2,6 +2,7 @@ package com.majang.ui.home;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.majang.databinding.FragmentHomeBinding;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.TreeMap;
 
 public class HomeFragment extends Fragment {
@@ -36,7 +38,11 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        ArrayList<String> views = new ArrayList<>();
+        binding.bottomBar.deleteAllButton.setOnClickListener(v -> {
+            binding.bottomBar.myLinearLayout.removeAllViews();
+            views.clear();
+        });
 
         String majang_types;
         try {
@@ -80,14 +86,22 @@ public class HomeFragment extends Fragment {
                             majang_item.setTag("selected");
                         }
                         try {
-                            View majang_item1 = addItem(Majang_types, s1, linearLayout);
-                            majang_item1.setOnClickListener(v1 -> {
-                                linearLayout.removeView(majang_item1);
-                            });
+                            View majang_item1;
+                            int sum = Collections.frequency(views, s1);
+                            if (sum < 4 && views.size() < 13) {
+                                views.add(s1);
+                                majang_item1 = addItem(Majang_types, s1, linearLayout);
+                                majang_item1.setOnClickListener(v1 -> {
+                                    linearLayout.removeView(majang_item1);
+                                    views.remove(s1);
+                                    Log.d("test", views.toString());
+                                });
+                            }
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
+                        Log.d("test", views.toString());
 
                     });
                 }

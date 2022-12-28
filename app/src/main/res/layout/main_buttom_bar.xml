@@ -33,7 +33,7 @@
     </HorizontalScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next"
@@ -41,12 +41,12 @@
         app:icon="@drawable/ic_baseline_next_plan_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/materialButton2"
+        app:layout_constraintStart_toEndOf="@+id/delete_all_button"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/delete_all_button"
         style="?attr/materialButtonOutlinedStyle"
-        android:id="@+id/materialButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cornerRadius="20dp"
@@ -55,7 +55,7 @@
         app:strokeColor="@color/main"
         app:strokeWidth="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/materialButton"
+        app:layout_constraintEnd_toStartOf="@+id/next_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
