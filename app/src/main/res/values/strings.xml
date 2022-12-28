@@ -43,4 +43,8 @@
     <string name="menu_gallery">役種一覽</string>
     <string name="menu_calculate">符數計算機</string>
     <string name="pai_option">牌型選項</string>
+    <string name="next">下一步</string>
+    <string name="deleteAll">移除全部</string>
+    <string name="choose_fu">選擇符數</string>
+    <string name="input_fan">輸入番數</string>
 </resources>
