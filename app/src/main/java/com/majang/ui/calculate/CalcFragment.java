@@ -11,15 +11,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.majang.Adapter.FuiRecyclerViewAdapter;
+import com.majang.Hai;
 import com.majang.databinding.FragmentCalcBinding;
-import com.majang.hai.Hai;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class CalcFragment extends Fragment {
 
     private FragmentCalcBinding binding;
+    protected RecyclerView.LayoutManager mLayoutManager;
+    protected FuiRecyclerViewAdapter mAdapter;
+    protected RecyclerView mRecyclerView;
+    protected ArrayList<Integer> mDataset = new ArrayList<>();
 
 
     @Override
@@ -40,6 +47,7 @@ public class CalcFragment extends Fragment {
                     .setMessage(String.format("莊家得點: %d\n閒家得點: %d", ans[0], ans[1]))
                     .setPositiveButton("OK", null)
                     .show();
+
         });
         return root;
     }
