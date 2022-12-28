@@ -348,7 +348,7 @@ public class Hai {
             }
             System.out.println("Done");
         }
-        ans = ans + fan+"翻"+ Hai.grade(fu, fan)
+        ans = ans + fan+"翻 "+ Hai.grade(fu, fan)
                 + "\n" + "莊家得點:" + Hai.fuCalculate(fu, fan)[0] + "\n閒家得點:" + Hai.fuCalculate(fu, fan)[1];
 
         return ans;
