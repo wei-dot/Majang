@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Majang" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -29,6 +29,17 @@
     <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
         <item name="color">@color/main</item>
+    </style>
+
+    <style name="TextInputEditText_style" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxStrokeColor" tools:ignore="PrivateResource">@color/mtrl_textinput_default_box_stroke_color</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="android:textColorHint">#AAAAAA</item>
+        <item name="passwordToggleTint">@color/black</item>
     </style>
 
 
