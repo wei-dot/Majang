@@ -27,68 +27,12 @@
         layout="@layout/content_main"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_sheet"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bottom_sheet"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/bottom_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <HorizontalScrollView
-            android:id="@+id/horizontalScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck">
-
-            <!-- Buttons -->
-            <LinearLayout
-                android:id="@+id/my_linear_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" />
-        </HorizontalScrollView>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/next"
-            app:cornerRadius="20dp"
-            app:icon="@drawable/ic_baseline_next_plan_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/materialButton2"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
-
-        <com.google.android.material.button.MaterialButton
-            style="?attr/materialButtonOutlinedStyle"
-            android:id="@+id/materialButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cornerRadius="20dp"
-            android:text="@string/deleteAll"
-            app:icon="@drawable/ic_baseline_delete_forever_24"
-            app:strokeColor="@color/main"
-            app:strokeWidth="3dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/materialButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
