@@ -1507,6 +1507,9 @@ public class Hai {
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
+        if(Hai.isKokushi(temps)){
+            return true;
+        }
         /*
         将手牌排序后，找到n个雀头(V)
         对于每个雀头，都执行下面的判断逻辑
