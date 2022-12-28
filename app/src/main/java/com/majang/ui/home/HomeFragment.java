@@ -23,11 +23,13 @@ import com.google.android.material.card.MaterialCardView;
 import com.majang.Constants;
 import com.majang.R;
 import com.majang.databinding.FragmentHomeBinding;
+import com.majang.hai.Hai;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.TreeMap;
 
 public class HomeFragment extends Fragment {
@@ -47,6 +49,21 @@ public class HomeFragment extends Fragment {
         binding.bottomBar.deleteAllButton.setOnClickListener(v -> {
             binding.bottomBar.myLinearLayout.removeAllViews();
             views.clear();
+        });
+        ArrayList<Hai> myPai = new ArrayList<>();
+        binding.bottomBar.nextButton.setOnClickListener(v -> {
+            if (views.size() >= 14) {
+                for (int i = 0; i < 14; i++) {
+                    myPai.add(new Hai(views.get(i)));
+                }
+                String temp = Hai.ron(new ArrayList<>(myPai.subList(0,myPai.size()-1)), myPai.get(myPai.size()-1), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Hai[]{new Hai("西風")}, new Hai[]{new Hai("三條")}, true);
+                Log.d("ron", temp);
+                new AlertDialog.Builder(getContext())
+                        .setTitle("和了")
+                        .setMessage(temp)
+                        .setPositiveButton("OK", null)
+                        .show();
+            }
         });
 
         Spinner spinner = binding.optionSpinner;
@@ -107,7 +124,7 @@ public class HomeFragment extends Fragment {
                         try {
                             View majang_item1;
                             int sum = Collections.frequency(views, s1);
-                            if (sum < 4 && views.size() < 13) {
+                            if (sum < 4 && views.size() < 14) {
                                 views.add(s1);
                                 majang_item1 = addItem(Majang_types, s1, linearLayout);
                                 majang_item1.setOnClickListener(v1 -> {
