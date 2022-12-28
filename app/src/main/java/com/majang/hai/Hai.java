@@ -3,14 +3,14 @@ package com.majang.hai;/*
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.util.*;
-import java.lang.*;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
- *
  * @author jerem
  */
-class Hai {
+public class Hai {
 
     int num;
     int type;
@@ -59,7 +59,7 @@ class Hai {
                 }
             } else {
                 switch (hai.substring(1, 2)) {
-                    case "索":
+                    case "條":
                         this.type = 1;
                         break;
                     case "筒":
@@ -102,46 +102,12 @@ class Hai {
         }
     }
 
-    public String getType() {
-        String[] wind = {"空", "東風", "南風", "西風", "北風", "中", "發", "白"};
-        if (type == 0) {
-            return wind[num];
-        } else if (type == 1) {
-            return "索";
-        } else if (type == 2) {
-            return "筒";
-        } else {
-            return "萬";
-        }
-    }
-
-    public void turnRed() {
-        if (this.num == 5 && type != 0) {
-            this.red = true;
-        }
-    }
-
-    public boolean isEqual(Hai a) {
-        return this.num == a.num && this.type == a.type;
-    }
-
-    @Override
-    public String toString() {
-        String[] word = {"", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
-        String[] wind = {"空", "東風", "南風", "西風", "北風", "中", "發", "白"};
-        if (type == 0) {
-            return wind[num];
-        } else {
-            return word[num] + this.getType();
-        }
-    }
-
     public static ArrayList<Hai> sort(Hai[] unsorted) {
 
-        ArrayList<Hai> type0 = new ArrayList<Hai>();
-        ArrayList<Hai> type1 = new ArrayList<Hai>();
-        ArrayList<Hai> type2 = new ArrayList<Hai>();
-        ArrayList<Hai> type3 = new ArrayList<Hai>();
+        ArrayList<Hai> type0 = new ArrayList<>();
+        ArrayList<Hai> type1 = new ArrayList<>();
+        ArrayList<Hai> type2 = new ArrayList<>();
+        ArrayList<Hai> type3 = new ArrayList<>();
 
         for (int i = 0; i < unsorted.length; i++) {
             if (unsorted[i].type == 0) {
@@ -160,7 +126,7 @@ class Hai {
         type2.sort(new HaiNumSort());
         type3.sort(new HaiNumSort());
 
-        ArrayList<Hai> sorted = new ArrayList<Hai>();
+        ArrayList<Hai> sorted = new ArrayList<>();
         sorted.addAll(type3);
         sorted.addAll(type2);
         sorted.addAll(type1);
@@ -170,10 +136,10 @@ class Hai {
     }
 
     public static ArrayList<Hai> sort(ArrayList<Hai> unsorted) {
-        ArrayList<Hai> type0 = new ArrayList<Hai>();
-        ArrayList<Hai> type1 = new ArrayList<Hai>();
-        ArrayList<Hai> type2 = new ArrayList<Hai>();
-        ArrayList<Hai> type3 = new ArrayList<Hai>();
+        ArrayList<Hai> type0 = new ArrayList<>();
+        ArrayList<Hai> type1 = new ArrayList<>();
+        ArrayList<Hai> type2 = new ArrayList<>();
+        ArrayList<Hai> type3 = new ArrayList<>();
 
         for (int i = 0; i < unsorted.size(); i++) {
             if (unsorted.get(i).type == 0) {
@@ -192,7 +158,7 @@ class Hai {
         type2.sort(new HaiNumSort());
         type3.sort(new HaiNumSort());
 
-        ArrayList<Hai> sorted = new ArrayList<Hai>();
+        ArrayList<Hai> sorted = new ArrayList<>();
         sorted.addAll(type3);
         sorted.addAll(type2);
         sorted.addAll(type1);
@@ -202,12 +168,12 @@ class Hai {
     }
 
     public static String ron(ArrayList<Hai> hands, Hai tin, ArrayList<Hai> minGantsu, ArrayList<Hai> anGantsu,
-            ArrayList<Hai> furu, Hai[] cTora, Hai[] cUraTora, boolean tsumo) {
+                             ArrayList<Hai> furu, Hai[] cTora, Hai[] cUraTora, boolean tsumo) {
         int fu = 20;//符
         int fan = 0;//翻數
         String ans = "";
-        ArrayList<Hai> full = new ArrayList<Hai>();
-        ArrayList<Hai> gantsu = new ArrayList<Hai>();
+        ArrayList<Hai> full = new ArrayList<>();
+        ArrayList<Hai> gantsu = new ArrayList<>();
         gantsu.addAll(minGantsu);
         gantsu.addAll(anGantsu);
         full.addAll(hands);
@@ -377,8 +343,8 @@ class Hai {
             if (fan < 5) {
                 ans = fu + "符\n" + ans;
             }
-            System.out.println("fu=" + fu + " fan=" + fan + ",[" + Hai.fuCaculate(fu, fan)[0] + "," + Hai.fuCaculate(fu, fan)[1] + "]");
-            ans = ans + Hai.grade(fu, fan) + "\n" + "莊家得點:" + Hai.fuCaculate(fu, fan)[0] + "\n閒家得點:" + Hai.fuCaculate(fu, fan)[1];
+            System.out.println("fu=" + fu + " fan=" + fan + ",[" + Hai.fuCalculate(fu, fan)[0] + "," + Hai.fuCalculate(fu, fan)[1] + "]");
+            ans = ans + Hai.grade(fu, fan) + "\n" + "莊家得點:" + Hai.fuCalculate(fu, fan)[0] + "\n閒家得點:" + Hai.fuCalculate(fu, fan)[1];
 
         }
 
@@ -386,7 +352,7 @@ class Hai {
     }
 
     //符數台數計算
-    public static int[] fuCaculate(int fu, int fan) {
+    public static int[] fuCalculate(int fu, int fan) {
         int[] points = new int[2];//0是莊家 1是閒家
         int a = fu / 10;
         int[][] host_p
@@ -453,12 +419,12 @@ class Hai {
 
     //計算符數
     public static int fuCount(ArrayList<Hai> full, ArrayList<Hai> hands, Hai tin, ArrayList<Hai> furu,
-            ArrayList<Hai> minGantsu, ArrayList<Hai> anGantsu, boolean tsumo) {
+                              ArrayList<Hai> minGantsu, ArrayList<Hai> anGantsu, boolean tsumo) {
         int total = 20;
         ArrayList<Hai> temps = Hai.sort(full);
         Hai[][] com = new Hai[4][3];
 
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))) {
@@ -466,7 +432,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         int now = 0;
         for (int i = 0; i < eyes.size(); i++) {
             total = 20;
@@ -559,7 +525,7 @@ class Hai {
 
     //聽啥牌
     public static ArrayList<Hai> tinHai(ArrayList<Hai> full, Hai tin) {
-        ArrayList<Hai> result = new ArrayList<Hai>();
+        ArrayList<Hai> result = new ArrayList<>();
         ArrayList<Hai> temp = Hai.sort(full);
         temp = Hai.removeHai(temp, tin, 1);
         for (int i = 1; i <= 3; i++) {
@@ -581,7 +547,7 @@ class Hai {
 
     //確認七對子
     public static boolean isChitoi(ArrayList<Hai> full) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(full);
         //符合2222222牌型
         for (int i = 0; i < temps.size(); i += 2) {
@@ -606,10 +572,10 @@ class Hai {
 
     //確認國士無雙
     public static boolean isKokushi(ArrayList<Hai> full) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(full);
-        Hai[] thirteenType = {new Hai("一萬"), new Hai("九萬"), new Hai("一筒"), new Hai("九筒"), new Hai("一索"), new Hai("九索"),
-            new Hai("東風"), new Hai("南風"), new Hai("西風"), new Hai("北風"), new Hai("中"), new Hai("發"), new Hai("白")};
+        Hai[] thirteenType = {new Hai("一萬"), new Hai("九萬"), new Hai("一筒"), new Hai("九筒"), new Hai("一條"), new Hai("九條"),
+                new Hai("東風"), new Hai("南風"), new Hai("西風"), new Hai("北風"), new Hai("中"), new Hai("發"), new Hai("白")};
         boolean[] checks = new boolean[thirteenType.length];
         boolean forteen = false;
         for (int i = 0; i < temps.size(); i++) {
@@ -628,17 +594,13 @@ class Hai {
                 return false;
             }
         }
-        if (forteen) {
-            return true;
-        } else {
-            return false;
-        }
+        return forteen;
     }
 
     //確認國士無雙十三面
     public static boolean isKokushi_ad(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> target = new ArrayList<Hai>();
-        String[] a = {"一筒", "九筒", "一萬", "九萬", "一索", "九索", "東風", "南風", "北風", "西風", "中", "發", "白"};
+        ArrayList<Hai> target = new ArrayList<>();
+        String[] a = {"一筒", "九筒", "一萬", "九萬", "一條", "九條", "東風", "南風", "北風", "西風", "中", "發", "白"};
         for (int i = 0; i < a.length; i++) {
             target.add(new Hai(a[i]));
         }
@@ -659,7 +621,7 @@ class Hai {
 
     //確認大三元
     public static boolean isDaisan(ArrayList<Hai> full) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(full);
         int red = 0;
         int green = 0;
@@ -675,16 +637,12 @@ class Hai {
                 continue;
             }
         }
-        if (red >= 3 && green >= 3 && white >= 3) {
-            return true;
-        } else {
-            return false;
-        }
+        return red >= 3 && green >= 3 && white >= 3;
     }
 
     //確認大四喜
     public static boolean isDaiSu_Shi(ArrayList<Hai> full) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(full);
         int e = 0;
         int w = 0;
@@ -703,16 +661,12 @@ class Hai {
                 continue;
             }
         }
-        if (e >= 3 && w >= 3 && s >= 3 && n >= 3) {
-            return true;
-        } else {
-            return false;
-        }
+        return e >= 3 && w >= 3 && s >= 3 && n >= 3;
     }
 
     //確認小四喜
     public static boolean isSaoSu_Shi(ArrayList<Hai> full) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(full);
 
         int[] winds = new int[4];
@@ -724,15 +678,12 @@ class Hai {
             }
             total += winds[i];
         }
-        if (total == 11) {
-            return true;
-        }
-        return false;
+        return total == 11;
     }
 
     //確認清老頭
     public static boolean isChinro(ArrayList<Hai> full) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(full);
 
         for (int i = 0; i < temps.size(); i++) {
@@ -745,7 +696,7 @@ class Hai {
 
     //確認字一色
     public static boolean isZuisu(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
@@ -760,7 +711,7 @@ class Hai {
     //確認九蓮寶燈
     public static boolean isChuren(ArrayList<Hai> hands, Hai tin) {
         int type = Hai.isPureType(hands, tin);
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
@@ -779,9 +730,9 @@ class Hai {
     //確認純正九蓮寶燈
     public static boolean isChuren_ad(ArrayList<Hai> hands, Hai tin) {
         int type = Hai.isPureType(hands, tin);
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
-        ArrayList<Hai> target = new ArrayList<Hai>();
+        ArrayList<Hai> target = new ArrayList<>();
         int[] a = {1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9};
         for (int i = 0; i < a.length; i++) {
             target.add(new Hai(a[i], type));
@@ -791,25 +742,22 @@ class Hai {
                 return false;
             }
         }
-        if (tin.type == type) {
-            return true;
-        }
-        return false;
+        return tin.type == type;
 
     }
 
     //確認綠一色
     public static boolean isRyuisu(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
-        ArrayList<Hai> check = new ArrayList<Hai>();
-        check.add(new Hai("二索"));
-        check.add(new Hai("三索"));
-        check.add(new Hai("四索"));
-        check.add(new Hai("六索"));
-        check.add(new Hai("八索"));
+        ArrayList<Hai> check = new ArrayList<>();
+        check.add(new Hai("二條"));
+        check.add(new Hai("三條"));
+        check.add(new Hai("四條"));
+        check.add(new Hai("六條"));
+        check.add(new Hai("八條"));
         check.add(new Hai("發"));
 
         for (int i = 0; i < temps.size(); i++) {
@@ -823,7 +771,7 @@ class Hai {
     //確認四暗刻
     public static boolean isSuenku(ArrayList<Hai> hands, Hai tin, boolean tsumo) {
         int current = 0;
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         P = Hai.sort(hands);
         int sz = P.size();
         while (true) {
@@ -839,11 +787,7 @@ class Hai {
             }
         }
         if (P.size() == 4) {
-            if (Hai.isContains(P, tin) && tsumo) {
-                return true;
-            } else {
-                return false;
-            }
+            return Hai.isContains(P, tin) && tsumo;
         } else if (P.size() == 1) {
             return Hai.isContains(P, tin);
         } else {
@@ -863,14 +807,14 @@ class Hai {
 
     //確認清一色
     public static boolean isChinisu(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         return Hai.isPureType(temps, tin) != (-1);
     }
 
     //確認混一色
     public static boolean isHonisu(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
@@ -885,13 +829,13 @@ class Hai {
 
     //確認純全帶么
     public static boolean isJunchan(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
         Hai[][] com = new Hai[4][3];
 
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))) {
@@ -899,7 +843,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         int now = 0;
         for (int i = 0; i < eyes.size(); i++) {
             now = 0;
@@ -960,13 +904,13 @@ class Hai {
 
     //確認二盃口
     public static boolean isLanpe(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
         Hai[][] com = new Hai[4][3];
 
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))) {
@@ -974,7 +918,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         int now = 0;
         for (int i = 0; i < eyes.size(); i++) {
             now = 0;
@@ -1031,13 +975,13 @@ class Hai {
 
     //確認三色同順
     public static boolean isSanse(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
         Hai[][] com = new Hai[4][3];
 
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))) {
@@ -1045,7 +989,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         int now = 0;
         for (int i = 0; i < eyes.size(); i++) {
             now = 0;
@@ -1113,13 +1057,13 @@ class Hai {
 
     //確認三色同刻
     public static boolean isSantonke(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
         Hai[][] com = new Hai[4][3];
 
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))) {
@@ -1127,7 +1071,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         int now = 0;
         for (int i = 0; i < eyes.size(); i++) {
             now = 0;
@@ -1192,13 +1136,13 @@ class Hai {
 
     //確認一氣通貫
     public static boolean isIchi(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
         Hai[][] com = new Hai[4][3];
 
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))) {
@@ -1206,7 +1150,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         int now = 0;
         for (int i = 0; i < eyes.size(); i++) {
             now = 0;
@@ -1276,7 +1220,7 @@ class Hai {
     //確認對對胡
     public static boolean isToitoi(ArrayList<Hai> full) {
         ArrayList<Hai> temps = Hai.sort(full);
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))) {
@@ -1284,7 +1228,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         for (int i = 0; i < eyes.size(); i++) {
             P = Hai.removeHai(temps, eyes.get(i), 2);
             P = Hai.sort(P);
@@ -1311,12 +1255,12 @@ class Hai {
 
     //確認三暗刻
     public static boolean isSanenke(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
 
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))) {
@@ -1324,7 +1268,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         int cnt = 0;
         for (int i = 0; i < eyes.size(); i++) {
             //去除雀頭
@@ -1376,7 +1320,7 @@ class Hai {
         ArrayList<Hai> temps = Hai.sort(full);
         Hai[][] com = new Hai[4][3];
 
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))
@@ -1385,7 +1329,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         int now = 0;
         for (int i = 0; i < eyes.size(); i++) {
             now = 0;
@@ -1491,7 +1435,7 @@ class Hai {
         ArrayList<Hai> temps = Hai.sort(full);
         Hai[][] com = new Hai[4][3];
 
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))
@@ -1500,7 +1444,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         int now = 0;
         for (int i = 0; i < eyes.size(); i++) {
             now = 0;
@@ -1559,7 +1503,7 @@ class Hai {
 
     //確認牌型是否已經和
     public static boolean isLegal(ArrayList<Hai> hands, Hai tin) {
-        ArrayList<Hai> temps = new ArrayList<Hai>();
+        ArrayList<Hai> temps = new ArrayList<>();
         temps = Hai.sort(hands);
         temps.add(tin);
         temps = Hai.sort(temps);
@@ -1577,7 +1521,7 @@ class Hai {
         重复6-7-8步骤，直到无刻子(V)
         如果P现在无牌，则表示此时能够和牌，如果有牌，表示不能和牌
          */
-        ArrayList<Hai> eyes = new ArrayList<Hai>();
+        ArrayList<Hai> eyes = new ArrayList<>();
         for (int i = 0; i < temps.size(); i++) {
             for (int j = 0; j < temps.size(); j++) {
                 if (i != j && temps.get(i).isEqual(temps.get(j)) && !(Hai.isContains(eyes, temps.get(i)))) {
@@ -1585,7 +1529,7 @@ class Hai {
                 }
             }
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         for (int i = 0; i < eyes.size(); i++) {
             //去除雀頭
             P = Hai.removeHai(temps, eyes.get(i), 2);
@@ -1692,7 +1636,7 @@ class Hai {
         if (!Hai.isContains(a, b)) {
             return a;
         }
-        ArrayList<Hai> P = new ArrayList<Hai>();
+        ArrayList<Hai> P = new ArrayList<>();
         for (int i = 0; i < a.size(); i++) {
             if (a.get(i).isEqual(b) && times != 0) {
                 times -= 1;
@@ -1731,6 +1675,40 @@ class Hai {
             }
         }
         return changed;
+    }
+
+    public String getType() {
+        String[] wind = {"空", "東風", "南風", "西風", "北風", "中", "發", "白"};
+        if (type == 0) {
+            return wind[num];
+        } else if (type == 1) {
+            return "條";
+        } else if (type == 2) {
+            return "筒";
+        } else {
+            return "萬";
+        }
+    }
+
+    public void turnRed() {
+        if (this.num == 5 && type != 0) {
+            this.red = true;
+        }
+    }
+
+    public boolean isEqual(Hai a) {
+        return this.num == a.num && this.type == a.type;
+    }
+
+    @Override
+    public String toString() {
+        String[] word = {"", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
+        String[] wind = {"空", "東風", "南風", "西風", "北風", "中", "發", "白"};
+        if (type == 0) {
+            return wind[num];
+        } else {
+            return word[num] + this.getType();
+        }
     }
 }
 
