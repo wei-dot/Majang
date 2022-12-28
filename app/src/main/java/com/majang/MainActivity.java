@@ -1,7 +1,5 @@
 package com.majang;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -11,18 +9,36 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
+import com.majang.databinding.ActivityMainBinding;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+
 public class MainActivity extends AppCompatActivity {
+    private AppBarConfiguration mAppBarConfiguration;
+    private ActivityMainBinding binding;
 
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        setUpToolbar();
+
         LinearLayout linearLayout = findViewById(R.id.tiao_linear_layout);
 
         ArrayList<String[]> majang_list = new ArrayList<>();
@@ -45,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         //sort
         majang_list.sort(new ChineseNameComparator());
 
-        try{
-            for(String[] s : majang_list){
+        try {
+            for (String[] s : majang_list) {
                 View majang_item = getLayoutInflater().inflate(R.layout.majang_item, linearLayout, false);
                 ImageView imageView = majang_item.findViewById(R.id.majang_icon);
                 TextView textView = majang_item.findViewById(R.id.majang_name);
@@ -73,27 +89,50 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-                if (s[0].equals("tiao")){
+                if (s[0].equals("tiao")) {
                     linearLayout.addView(majang_item);
                 }
-                if (s[0].equals("wan")){
+                if (s[0].equals("wan")) {
                     LinearLayout linearLayout1 = findViewById(R.id.wan_linear_layout);
                     linearLayout1.addView(majang_item);
                 }
-                if (s[0].equals("tong")){
+                if (s[0].equals("tong")) {
                     LinearLayout linearLayout1 = findViewById(R.id.tong_linear_layout);
                     linearLayout1.addView(majang_item);
                 }
-                if (s[0].equals("zi")){
+                if (s[0].equals("zi")) {
                     LinearLayout linearLayout1 = findViewById(R.id.zi_linear_layout);
                     linearLayout1.addView(majang_item);
                 }
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
+
+    private void setUpToolbar() {
+        setSupportActionBar(binding.appBarMain.toolbar);
+
+        DrawerLayout drawer = binding.drawerLayout;
+
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                .setOpenableLayout(drawer)
+
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+    }
+
 }
+
 class PaiView extends androidx.appcompat.widget.AppCompatImageView {
     public PaiView(Context context) {
         super(context);
@@ -101,24 +140,24 @@ class PaiView extends androidx.appcompat.widget.AppCompatImageView {
 }
 
 class ChineseNumberUtil {
-    public static int chineseNumber2Int(String chineseNumber){
+    public static int chineseNumber2Int(String chineseNumber) {
         int result = 0;
         int temp = 1;
-        char[] cnArr = new char[]{'一','二','三','四','五','六','七','八','九'};
-        char[] ziArr = new char[]{'北','西','南','東','白','發','中'};
-        for(int i = 0; i < chineseNumber.length(); i++){
+        char[] cnArr = new char[]{'一', '二', '三', '四', '五', '六', '七', '八', '九'};
+        char[] ziArr = new char[]{'北', '西', '南', '東', '白', '發', '中'};
+        for (int i = 0; i < chineseNumber.length(); i++) {
             char c = chineseNumber.charAt(i);
             boolean isNumber = false;
-            for(int j = 0; j < cnArr.length; j++){
-                if(c == cnArr[j]){
+            for (int j = 0; j < cnArr.length; j++) {
+                if (c == cnArr[j]) {
                     temp = j + 1;
                     isNumber = true;
                     break;
                 }
             }
-            if(!isNumber){
-                for(int j = 0; j < ziArr.length; j++){
-                    if(c == ziArr[j]){
+            if (!isNumber) {
+                for (int j = 0; j < ziArr.length; j++) {
+                    if (c == ziArr[j]) {
                         temp = j + 1;
                         break;
                     }
@@ -133,7 +172,6 @@ class ChineseNumberUtil {
 class ChineseNameComparator implements Comparator<String[]> {
     @Override
     public int compare(String[] arg0, String[] arg1) {
-        return Integer.compare(ChineseNumberUtil.chineseNumber2Int(arg0[1]),
-                ChineseNumberUtil.chineseNumber2Int(arg1[1]));
+        return Integer.compare(ChineseNumberUtil.chineseNumber2Int(arg0[1]), ChineseNumberUtil.chineseNumber2Int(arg1[1]));
     }
 }
