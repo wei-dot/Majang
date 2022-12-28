@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.home.HomeFragment">
-
+    tools:context=".MainActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -15,18 +15,23 @@
         android:fillViewport="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            >
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="34dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/tiao"
                 android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
@@ -70,8 +75,8 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="34dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/wan"
                 android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
@@ -112,8 +117,8 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:layout_width="34dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/tong"
                 android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
@@ -154,8 +159,8 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="34dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/zi"
                 android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
@@ -194,12 +199,32 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:text="@string/pai_option"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="@color/main"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/option_spinner"
+                app:layout_constraintStart_toStartOf="@+id/option_spinner" />
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="346dp"
                 android:layout_height="58dp"
                 app:layout_constraintEnd_toEndOf="@+id/zi_card"
                 app:layout_constraintStart_toStartOf="@+id/zi_card"
-                app:layout_constraintTop_toBottomOf="@+id/zi_card">
+                app:layout_constraintTop_toBottomOf="@+id/zi_card"
+                android:layout_marginTop="60dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp"
+                android:id="@+id/option_spinner"
+                app:strokeColor="@color/thr"
+                app:strokeWidth="2dp"
+
+                >
 
                 <Spinner
                     android:layout_width="match_parent"
@@ -210,8 +235,8 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/zi_card"
                     app:layout_constraintTop_toBottomOf="@+id/zi_card"
-                    app:layout_constraintVertical_bias="0.0" />
-
+                    app:layout_constraintVertical_bias="0.0"
+                    />
 
             </com.google.android.material.card.MaterialCardView>
 
