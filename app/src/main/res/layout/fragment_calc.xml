@@ -17,6 +17,7 @@
         app:boxCornerRadiusTopStart="10dp"
         app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
         app:boxStrokeWidth="3dp"
+        app:hintTextColor="@color/main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
