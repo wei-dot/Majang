@@ -233,7 +233,8 @@ public class Hai {
                 ans = "七對子 2翻\n";
             }
             if (fan == 13) {
-                return ans;
+                return ans +Hai.grade(fu, fan) + "\n"
+                        + "莊家得點:" + Hai.fuCalculate(fu, fan)[0] + "\n閒家得點:" + Hai.fuCalculate(fu, fan)[1];
             }
             if (Hai.isChinisu(hands, tin)) {
                 fan += 6;
@@ -346,9 +347,8 @@ public class Hai {
                 ans = fu + "符\n" + ans;
             }
             System.out.println("fu=" + fu + " fan=" + fan + ",[" + Hai.fuCalculate(fu, fan)[0] + "," + Hai.fuCalculate(fu, fan)[1] + "]");
-            ans = ans + Hai.grade(fu, fan) + "\n" + "莊家得點:" + Hai.fuCalculate(fu, fan)[0] + "\n閒家得點:" + Hai.fuCalculate(fu, fan)[1];
-
         }
+        ans = ans + Hai.grade(fu, fan) + "\n" + "莊家得點:" + Hai.fuCalculate(fu, fan)[0] + "\n閒家得點:" + Hai.fuCalculate(fu, fan)[1];
 
         return ans;
     }
@@ -372,7 +372,6 @@ public class Hai {
         if (fan < 5 && fu != 25) {
             points[0] = host_p[fan - 1][a];
             points[1] = gust_p[fan - 1][a];
-
         } else if (fu == 25) {
             points[0] = host_chitoi[fan];
             points[1] = gust_chitoi[fan];
