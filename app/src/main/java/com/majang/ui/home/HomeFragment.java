@@ -1,13 +1,16 @@
 package com.majang.ui.home;
 
+import android.app.AlertDialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.majang.Constants;
 import com.majang.R;
 import com.majang.databinding.FragmentHomeBinding;
@@ -43,6 +48,30 @@ public class HomeFragment extends Fragment {
             binding.bottomBar.myLinearLayout.removeAllViews();
             views.clear();
         });
+
+        Spinner spinner = binding.optionSpinner;
+        String[] items = {"手牌","銃牌","明槓","暗槓","副露","寶牌","裡寶牌","自摸(o/x)"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, items);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        MaterialButton info = binding.bottomBar.infoButton;
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(
+                        getContext())
+                        .setTitle("不計以下役種:")
+                        .setMessage("一翻:立直、一發、門清自摸和、嶺上開花、搶槓、海底撈月、河底撈魚、赤寶牌\n" +
+                                "兩翻:雙立直\n" +
+                                "五翻:流局滿貫\n" +
+                                "役滿:天和、地和 \n" +
+                                "這些都是和牌局的手牌比較無關的要計算要通靈，所以不計")
+                        .setPositiveButton("確定", null)
+                        .show();
+            }
+        });
+
 
         String majang_types;
         try {

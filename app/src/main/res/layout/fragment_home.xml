@@ -43,11 +43,11 @@
                     android:textAppearance="?attr/textAppearanceTitleMedium"
                     android:textColor="@color/main"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/option_spinner"
-                    app:layout_constraintStart_toStartOf="@+id/option_spinner" />
+                    app:layout_constraintBottom_toTopOf="@+id/option_spinner_card"
+                    app:layout_constraintStart_toStartOf="@+id/option_spinner_card" />
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/option_spinner"
+                    android:id="@+id/option_spinner_card"
                     android:layout_width="346dp"
                     android:layout_height="58dp"
                     android:layout_marginTop="52dp"
@@ -62,6 +62,7 @@
                     app:strokeWidth="2dp">
 
                     <Spinner
+                        android:id="@+id/option_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:layout_constraintBottom_toBottomOf="@+id/zi_card"
@@ -71,6 +72,7 @@
                         app:layout_constraintStart_toStartOf="@+id/zi_card"
                         app:layout_constraintTop_toBottomOf="@+id/zi_card"
                         app:layout_constraintVertical_bias="1.0" />
+                        />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -93,10 +95,10 @@
                     android:layout_marginTop="56dp"
                     app:cardBackgroundColor="@color/thr"
                     app:cardCornerRadius="10dp"
-                    app:layout_constraintEnd_toEndOf="@+id/option_spinner"
+                    app:layout_constraintEnd_toEndOf="@+id/option_spinner_card"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/option_spinner"
-                    app:layout_constraintTop_toBottomOf="@+id/option_spinner">
+                    app:layout_constraintStart_toStartOf="@+id/option_spinner_card"
+                    app:layout_constraintTop_toBottomOf="@+id/option_spinner_card">
                     <!-- Title, secondary and supporting text -->
 
 
