@@ -196,7 +196,7 @@ public class Hai {
                 ans = "國士無雙十三面 \n";
             } else if (Hai.isKokushi(full)) {
                 fan = 13;
-                ans = "國士無雙十三面 \n";
+                ans = "國士無雙 \n";
             } else if (Hai.isDaisan(full)) {
                 fan = 13;
                 ans = "大三元 \n";
@@ -233,14 +233,13 @@ public class Hai {
                 ans = "七對子 2翻\n";
             }
             if (fan == 13) {
-                return ans +Hai.grade(fu, fan) + "\n"
-                        + "莊家得點:" + Hai.fuCalculate(fu, fan)[0] + "\n閒家得點:" + Hai.fuCalculate(fu, fan)[1];
+                return ans + Hai.grade(fu, fan) +
+                        "\n" + "莊家得點:" + Hai.fuCalculate(fu, fan)[0] + "\n閒家得點:" + Hai.fuCalculate(fu, fan)[1];
             }
             if (Hai.isChinisu(hands, tin)) {
                 fan += 6;
                 ans = "清一色  6翻\n" + ans;
-            }
-            if (Hai.isHonisu(hands, tin)) {
+            }else if (Hai.isHonisu(hands, tin)) {
                 if (furu.isEmpty() && minGantsu.isEmpty()) {
                     fan += 3;
                     ans = "混一色 3翻\n" + ans;
@@ -257,10 +256,23 @@ public class Hai {
                     fan += 2;
                     ans = "純全帶么 2翻\n" + ans;
                 }
+            }else if (Hai.isChanta(full)) {
+                if (furu.isEmpty() && minGantsu.isEmpty()) {
+                    fan += 2;
+                    ans = "混全帶么 2翻\n" + ans;
+                } else {
+                    fan += 1;
+                    ans = "混全帶么 1翻\n" + ans;
+                }
             }
             if (Hai.isJunchan(hands, tin)) {
                 fan += 3;
                 ans = "二盃口 3翻\n" + ans;
+            }else{
+                if (Hai.isIpe(full)) {
+                    fan += 1;
+                    ans = "一杯口 1翻\n" + ans;
+                }
             }
             if (Hai.isSanse(hands, tin)) {
                 if (furu.isEmpty() && minGantsu.isEmpty()) {
@@ -296,15 +308,7 @@ public class Hai {
                 fan += 2;
                 ans = "三槓子 2翻\n" + ans;
             }
-            if (Hai.isChanta(full)) {
-                if (furu.isEmpty() && minGantsu.isEmpty()) {
-                    fan += 2;
-                    ans = "混全帶么 2翻\n" + ans;
-                } else {
-                    fan += 1;
-                    ans = "混全帶么 1翻\n" + ans;
-                }
-            }
+
             if (Hai.isHonro(full)) {
                 fan += 2;
                 ans = "混老頭 2翻\n" + ans;
@@ -316,10 +320,6 @@ public class Hai {
             if (Hai.isTanyao(full)) {
                 fan += 1;
                 ans = "斷么九 1翻\n" + ans;
-            }
-            if (Hai.isIpe(full)) {
-                fan += 1;
-                ans = "一杯口 1翻\n" + ans;
             }
             if (Hai.hasGreen(full)) {
                 fan += 1;
@@ -346,9 +346,10 @@ public class Hai {
             if (fan < 5) {
                 ans = fu + "符\n" + ans;
             }
-            System.out.println("fu=" + fu + " fan=" + fan + ",[" + Hai.fuCalculate(fu, fan)[0] + "," + Hai.fuCalculate(fu, fan)[1] + "]");
+            System.out.println("Done");
         }
-        ans = ans + Hai.grade(fu, fan) + "\n" + "莊家得點:" + Hai.fuCalculate(fu, fan)[0] + "\n閒家得點:" + Hai.fuCalculate(fu, fan)[1];
+        ans = ans + fan+"翻"+ Hai.grade(fu, fan)
+                + "\n" + "莊家得點:" + Hai.fuCalculate(fu, fan)[0] + "\n閒家得點:" + Hai.fuCalculate(fu, fan)[1];
 
         return ans;
     }
