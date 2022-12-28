@@ -1,5 +1,5 @@
 <resources>
-
+    <string name="app_name">Majang</string>
     <string name="wan">萬牌</string>
     <string name="wan_1">一萬</string>
     <string name="wan_2">二萬</string>
@@ -42,4 +42,5 @@
     <string name="menu_home">輸入牌型</string>
     <string name="menu_gallery">役種一覽</string>
     <string name="menu_calculate">符數計算機</string>
+    <string name="pai_option">牌型選項</string>
 </resources>
