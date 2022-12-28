@@ -67,16 +67,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/next"
+            app:cornerRadius="20dp"
+            app:icon="@drawable/ic_baseline_next_plan_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/materialButton2"
             app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
         <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
             android:id="@+id/materialButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:cornerRadius="20dp"
             android:text="@string/deleteAll"
+            app:icon="@drawable/ic_baseline_delete_forever_24"
+            app:strokeColor="@color/main"
+            app:strokeWidth="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/materialButton"
             app:layout_constraintStart_toStartOf="parent"
