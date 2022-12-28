@@ -17,15 +17,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.majang.Constants;
+import com.majang.Hai;
 import com.majang.R;
 import com.majang.databinding.FragmentHomeBinding;
-import com.majang.hai.Hai;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.TreeMap;
 
 public class HomeFragment extends Fragment {
@@ -52,13 +51,14 @@ public class HomeFragment extends Fragment {
                 for (int i = 0; i < 14; i++) {
                     myPai.add(new Hai(views.get(i)));
                 }
-                String temp = Hai.ron(new ArrayList<>(myPai.subList(0,myPai.size()-1)), myPai.get(myPai.size()-1), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Hai[]{new Hai("西風")}, new Hai[]{new Hai("三條")}, true);
+                String temp = Hai.ron(new ArrayList<>(myPai.subList(0, myPai.size() - 1)), myPai.get(myPai.size() - 1), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Hai[]{new Hai("西風")}, new Hai[]{new Hai("三條")}, true);
                 Log.d("ron", temp);
                 new AlertDialog.Builder(getContext())
                         .setTitle("和了")
                         .setMessage(temp)
                         .setPositiveButton("OK", null)
                         .show();
+                myPai.clear();
             }
         });
 

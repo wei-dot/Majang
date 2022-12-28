@@ -1,8 +1,10 @@
-package com.majang.hai;/*
+package com.majang;/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -185,7 +187,7 @@ public class Hai {
         }
         full.add(tin);
         full = Hai.sort(full);
-
+        Log.d("full", full.toString());
         if (!Hai.isLegal(hands, tin)) {
             return "無法和牌";
         } else {
