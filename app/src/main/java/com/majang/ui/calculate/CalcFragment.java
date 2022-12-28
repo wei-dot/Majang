@@ -51,9 +51,9 @@ public class CalcFragment extends Fragment {
         });
         ArrayList<Integer> fui = Arrays.stream(Constants.fui).boxed().collect(Collectors.toCollection(ArrayList::new));
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, fui);
-        binding.filledExposedDropdown.setText("20", false);
+//        binding.filledExposedDropdown.setText("20", false);
         binding.filledExposedDropdown.setAdapter(adapter);
-        binding.filledExposedDropdown.setDropDownBackgroundResource(R.color.white);
+//        binding.filledExposedDropdown.setDropDownBackgroundResource(R.color.white);
         return root;
     }
 
