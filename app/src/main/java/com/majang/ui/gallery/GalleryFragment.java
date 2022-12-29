@@ -66,13 +66,11 @@ public class GalleryFragment extends Fragment {
             while (keys.hasNext()) {
                 String type = keys.next();
                 Object value = jsonObject.get(type);
-                Log.d("json", type);
                 JSONObject item = new JSONObject(value.toString());
                 Iterator<String> keys2 = item.keys();
                 while (keys2.hasNext()) {
                     String title = keys2.next();
                     Object content = item.get(title);
-                    Log.d("json", title + " " + content);
                     View view = getLayoutInflater().inflate(R.layout.gallery_item, null);
                     TextView galleryItemTitle = view.findViewById(R.id.gallery_item_title);
                     galleryItemTitle.setText(title);
@@ -92,7 +90,6 @@ public class GalleryFragment extends Fragment {
             binding.typeDropdown.setAdapter(adapter);
             binding.typeDropdown.setSelection(0);
             binding.typeDropdown.setOnItemClickListener((parent, view, position, id) -> {
-                Log.d("dropdown", "onItemClick: " + parent.getItemAtPosition(position));
                 String type = parent.getItemAtPosition(position).toString();
                 for (int i = 0; i < linearLayout.getChildCount(); i++) {
                     View child = linearLayout.getChildAt(i);
