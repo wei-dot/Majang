@@ -179,7 +179,8 @@ public class Hai {
         gantsu.addAll(minGantsu);
         gantsu.addAll(anGantsu);
         full.addAll(hands);
-        full.addAll(furu);
+//        full.addAll(furu);
+        Hai.removeAllHai(full,furu);
         for (int i = 0; i < gantsu.size(); i++) {
             for (int j = 0; j < 3; j++) {
                 full.add(gantsu.get(i));
