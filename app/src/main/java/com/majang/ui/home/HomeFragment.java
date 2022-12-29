@@ -1,6 +1,5 @@
 package com.majang.ui.home;
 
-import android.app.AlertDialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -108,8 +107,8 @@ public class HomeFragment extends Fragment {
                         .setNegativeButton("否", (dialog, which) -> {
                             isTsumo = false;
 //                            myPai.removeAll(furu);
-                            Log.d("test",furu.toString());
-                            Log.d("test",myPai.toString());
+                            Log.d("test", furu.toString());
+                            Log.d("test", myPai.toString());
                             String ans = Hai.ron(ConvertToHai(myPai), new Hai(tin.get(0)), ConvertToHai(minGantsu),
                                     ConvertToHai(anGantsu), ConvertToHai(furu),
                                     ConvertToHai(cTora).toArray(new Hai[cTora.size()]),
@@ -144,8 +143,7 @@ public class HomeFragment extends Fragment {
         spinner.setAdapter(adapter);
 
         MaterialButton info = binding.bottomBar.infoButton;
-        info.setOnClickListener(v -> new AlertDialog.Builder(
-                getContext())
+        info.setOnClickListener(v -> new MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialog_Rounded)
                 .setTitle("不計以下役種:")
                 .setMessage("一翻:立直、一發、門清自摸和、嶺上開花、搶槓、海底撈月、河底撈魚、赤寶牌\n" +
                         "兩翻:雙立直\n" +
