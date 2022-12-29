@@ -1,6 +1,5 @@
 package com.majang.ui.calculate;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.majang.Constants;
 import com.majang.Hai;
 import com.majang.R;
@@ -40,10 +40,10 @@ public class CalcFragment extends Fragment {
             int fan = Integer.parseInt(Objects.requireNonNull(binding.fanInput.getEditText()).getText().toString());
             int fu = Integer.parseInt(binding.filledExposedDropdown.getText().toString());
             int[] ans = Hai.fuCalculate(fu, fan);
-            new AlertDialog.Builder(getContext())
+            new MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialog_Rounded)
                     .setTitle("計算結果")
                     .setMessage(String.format("莊家得點: %d\n閒家得點: %d", ans[0], ans[1]))
-                    .setPositiveButton("OK", null)
+                    .setPositiveButton("確定", null)
                     .show();
 
         });

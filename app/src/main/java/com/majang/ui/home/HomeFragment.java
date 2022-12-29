@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.majang.Constants;
 import com.majang.Hai;
 import com.majang.R;
@@ -79,19 +80,20 @@ public class HomeFragment extends Fragment {
         });
         binding.bottomBar.nextButton.setOnClickListener(v -> {
             if (myPai.size() >= 13 && tin.size() >= 1 && cTora.size() >= 1) {
-                AlertDialog val = new AlertDialog.Builder(getContext())
+                new MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialog_Rounded)
                         .setTitle("自摸")
                         .setMessage("是否自摸")
-                        .setNegativeButton("否", (dialog, which) -> {
-                            isTsumo = false;
+
+                        .setPositiveButton("是", (dialog, which) -> {
+                            isTsumo = true;
                             String ans = Hai.ron(ConvertToHai(myPai), new Hai(tin.get(0)), ConvertToHai(minGantsu),
                                     ConvertToHai(anGantsu), ConvertToHai(furu),
                                     ConvertToHai(cTora).toArray(new Hai[cTora.size()]),
                                     ConvertToHai(cUraTora).toArray(new Hai[cUraTora.size()]), isTsumo);
-                            new AlertDialog.Builder(getContext())
+                            new MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialog_Rounded)
                                     .setTitle("和了")
                                     .setMessage(ans)
-                                    .setPositiveButton("OK", null)
+                                    .setPositiveButton("確定", null)
                                     .show();
                             myPai.clear();
                             tin.clear();
@@ -102,16 +104,16 @@ public class HomeFragment extends Fragment {
                             cUraTora.clear();
                             binding.bottomBar.myLinearLayout.removeAllViews();
                         })
-                        .setPositiveButton("是", (dialog, which) -> {
-                            isTsumo = true;
+                        .setNegativeButton("否", (dialog, which) -> {
+                            isTsumo = false;
                             String ans = Hai.ron(ConvertToHai(myPai), new Hai(tin.get(0)), ConvertToHai(minGantsu),
                                     ConvertToHai(anGantsu), ConvertToHai(furu),
                                     ConvertToHai(cTora).toArray(new Hai[cTora.size()]),
                                     ConvertToHai(cUraTora).toArray(new Hai[cUraTora.size()]), isTsumo);
-                            new AlertDialog.Builder(getContext())
+                            new MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialog_Rounded)
                                     .setTitle("和了")
                                     .setMessage(ans)
-                                    .setPositiveButton("OK", null)
+                                    .setPositiveButton("確定", null)
                                     .show();
                             myPai.clear();
                             tin.clear();
@@ -124,7 +126,7 @@ public class HomeFragment extends Fragment {
                         })
                         .show();
             } else {
-                new AlertDialog.Builder(getContext())
+                new MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialog_Rounded)
                         .setTitle("錯誤")
                         .setMessage("手牌數量不足")
                         .setPositiveButton("OK", null)
@@ -133,8 +135,7 @@ public class HomeFragment extends Fragment {
         });
 
         Spinner spinner = binding.optionSpinner;
-        String[] items = {"手牌", "銃牌", "明槓", "暗槓", "副露", "寶牌", "裡寶牌"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, Constants.items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
