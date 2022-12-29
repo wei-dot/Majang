@@ -86,6 +86,7 @@ public class HomeFragment extends Fragment {
 
                         .setPositiveButton("是", (dialog, which) -> {
                             isTsumo = true;
+                            myPai.removeAll(furu);
                             String ans = Hai.ron(ConvertToHai(myPai), new Hai(tin.get(0)), ConvertToHai(minGantsu),
                                     ConvertToHai(anGantsu), ConvertToHai(furu),
                                     ConvertToHai(cTora).toArray(new Hai[cTora.size()]),
@@ -106,6 +107,9 @@ public class HomeFragment extends Fragment {
                         })
                         .setNegativeButton("否", (dialog, which) -> {
                             isTsumo = false;
+                            myPai.removeAll(furu);
+                            Log.d("test",furu.toString());
+                            Log.d("test",myPai.toString());
                             String ans = Hai.ron(ConvertToHai(myPai), new Hai(tin.get(0)), ConvertToHai(minGantsu),
                                     ConvertToHai(anGantsu), ConvertToHai(furu),
                                     ConvertToHai(cTora).toArray(new Hai[cTora.size()]),
@@ -295,19 +299,20 @@ public class HomeFragment extends Fragment {
 
     private String getTypes(String value) {
         String types = "";
-        switch (value.substring(1, 2)) {
-            case "條":
-                types = "tiao";
-                break;
-            case "萬":
-                types = "wan";
-                break;
-            case "筒":
-                types = "tong";
-                break;
-            case "字":
-                types = "zi";
-                break;
+        if (value.length() > 1) {
+            switch (value.substring(1, 2)) {
+                case "條":
+                    types = "tiao";
+                    break;
+                case "萬":
+                    types = "wan";
+                    break;
+                case "筒":
+                    types = "tong";
+                    break;
+            }
+        } else {
+            types = "zi";
         }
         return types;
     }

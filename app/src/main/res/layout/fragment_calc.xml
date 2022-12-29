@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.calculate.CalcFragment">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/fu_menu"
