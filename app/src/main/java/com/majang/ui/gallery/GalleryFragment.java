@@ -90,6 +90,7 @@ public class GalleryFragment extends Fragment {
             }
             adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, type_list);
             binding.typeDropdown.setAdapter(adapter);
+            binding.typeDropdown.setSelection(0);
             binding.typeDropdown.setOnItemClickListener((parent, view, position, id) -> {
                 Log.d("dropdown", "onItemClick: " + parent.getItemAtPosition(position));
                 String type = parent.getItemAtPosition(position).toString();
@@ -122,6 +123,7 @@ public class GalleryFragment extends Fragment {
     public void onResume() {
         super.onResume();
         adapter = new ArrayAdapter<>(getContext(), R.layout.text_row_item, type_list);
+        binding.typeDropdown.setSelection(0);
         binding.typeDropdown.setAdapter(adapter);
     }
 
