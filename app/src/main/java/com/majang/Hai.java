@@ -1612,6 +1612,14 @@ public class Hai {
         return false;
     }
 
+    //去除某些牌
+    public static ArrayList<Hai> removeAllHai(ArrayList<Hai> a,ArrayList<Hai> b){
+        for(int i=0;i<b.size();i++){
+            Hai.removeHai(a,b.get(i),1);
+        }
+        return a;
+    }
+
     //回傳某牌的數量
     public static int countHai(ArrayList<Hai> a, Hai b) {
         int cnt = 0;
