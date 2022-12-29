@@ -31,10 +31,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/choose_fu"
             android:inputType="none"
-            android:letterSpacing="0.5"
             android:popupBackground="@color/white"
             android:textColor="@color/black"
-            android:textSize="20sp"
             tools:ignore="LabelFor" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -70,8 +68,7 @@
         app:icon="@drawable/ic_baseline_next_plan_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.80
-"
+        app:layout_constraintHorizontal_bias="0.80"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.90
