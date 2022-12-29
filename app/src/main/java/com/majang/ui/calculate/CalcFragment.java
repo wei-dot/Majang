@@ -2,12 +2,10 @@ package com.majang.ui.calculate;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,8 +25,8 @@ import java.util.stream.Collectors;
 public class CalcFragment extends Fragment {
 
     private FragmentCalcBinding binding;
-
-
+    ArrayList<Integer> fui = Arrays.stream(Constants.fui).boxed().collect(Collectors.toCollection(ArrayList::new));
+    ArrayAdapter<Integer> adapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -49,12 +47,21 @@ public class CalcFragment extends Fragment {
                     .show();
 
         });
-        ArrayList<Integer> fui = Arrays.stream(Constants.fui).boxed().collect(Collectors.toCollection(ArrayList::new));
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, fui);
-//        binding.filledExposedDropdown.setText("20", false);
-        binding.filledExposedDropdown.setAdapter(adapter);
-//        binding.filledExposedDropdown.setDropDownBackgroundResource(R.color.white);
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        adapter = new ArrayAdapter<>(getContext(), R.layout.text_row_item, fui);
+        binding.filledExposedDropdown.setAdapter(adapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter = new ArrayAdapter<>(getContext(), R.layout.text_row_item, fui);
+        binding.filledExposedDropdown.setAdapter(adapter);
     }
 
     @Override
